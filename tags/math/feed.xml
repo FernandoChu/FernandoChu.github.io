@@ -2,18 +2,18 @@
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>An ignorant&#39;s blog</title>
-      <link>https://shiranaiyo.github.io//blog</link>
+      <link>https://FernandoChu.github.io//blog</link>
       <description>An ignorant&#39;s blog about his vague ideas about math, computer science, logic and others.</description>
       <language>en-us</language>
       <managingEditor>fernandochu97@gmail.com (Fernando Chu)</managingEditor>
       <webMaster>fernandochu97@gmail.com (Fernando Chu)</webMaster>
       <lastBuildDate>Tue, 04 Oct 2022 00:00:00 GMT</lastBuildDate>
-      <atom:link href="https://shiranaiyo.github.io//tags/math/feed.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://FernandoChu.github.io//tags/math/feed.xml" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://shiranaiyo.github.io//blog/placeholder</guid>
+    <guid>https://FernandoChu.github.io//blog/placeholder</guid>
     <title>Placeholder</title>
-    <link>https://shiranaiyo.github.io//blog/placeholder</link>
+    <link>https://FernandoChu.github.io//blog/placeholder</link>
     <description>This is a placeholder :)</description>
     <pubDate>Tue, 04 Oct 2022 00:00:00 GMT</pubDate>
     <author>fernandochu97@gmail.com (Fernando Chu)</author>
