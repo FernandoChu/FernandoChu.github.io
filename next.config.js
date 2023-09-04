@@ -57,7 +57,7 @@ module.exports = withBundleAnalyzer({
     unoptimized: true,
   },
 
-  assetPrefix: 'https://shiranaiyo.github.io/',
+  assetPrefix: 'https://FernandoChu.github.io/',
 
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],

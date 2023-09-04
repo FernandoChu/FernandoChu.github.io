@@ -6,7 +6,7 @@ occupation: Expert Ignorant
 email: fernandochu97@gmail.com
 twitter: https://twitter.com/shiranaiyo_
 # linkedin: https://www.linkedin.com
-github: https://github.com/shiranaiyo
+github: https://github.com/FernandoChu
 ---
 
 I'm in the last semester of my Master's in Pure Mathematics at the Universidad Nacional Mayor de San Marcos, Peru. I'm trying to understand better the foundations of mathematics and improve them if possible.
