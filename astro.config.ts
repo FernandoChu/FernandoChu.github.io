@@ -7,10 +7,12 @@ import rehypeKatex from "rehype-katex";
 
 import icon from "astro-icon";
 
+import expressiveCode from "astro-expressive-code";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://fernandochu.github.io",
-  integrations: [mdx(), tailwind(), icon()],
+  integrations: [expressiveCode(), mdx(), tailwind(), icon()],
   markdown: {
     syntaxHighlight: "prism",
     remarkPlugins: [remarkMath],
