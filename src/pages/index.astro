@@ -1,50 +1,64 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Link from "../components/common/Link.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Link from "../components/Link.astro";
 import { Image } from "astro:assets";
 import profileImg from "../assets/profile.png";
 import { Icon } from "astro-icon/components";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<Layout title="Fernando Chu">
-  <div class="flex flex-col md:flex-row flex-1 mt-6 md:mt-10">
-    <div class="md:w-7/12 flex flex-col justify-center">
-      <h1 class="text-2xl my-6" style="font-weight: 550">Fernando Chu</h1>
-      <p>
-        I'm a first year PhD Student at Utrecht University, working under
-        supervision of <Link href="https://paigenorth.github.io/"
-          >Paige North</Link
-        >.
-      </p>
-      <p class="mt-3">
-        My main interests revolve around category theory and type theory. In
-        particular, I'd like to better understand how these can be used to
-        tackle classical problems, generate better abstractions and/or
-        facilitate formalization of mathematics into proof assistants.
-      </p>
-      <p class="mt-3">
-        I'm currently co-hosting the <Link
-          href="/catseminar"
-          targetBlank={false}>Category Theory Seminar</Link
-        > at Utrecht University with <Link href="https://leoguetta.github.io/"
-          >Léonard Guetta</Link
-        >.
-      </p>
-      <div class="my-10 md:mt-20 text-gray-500 text-sm justify-end">
-        <a class="flex flex-row mb-1">
-          <Icon name="mdi:github" size="30" class="mr-2" />
-          <span class="self-center">https://github.com/FernandoChu</span>
-        </a>
-        <a class="flex flex-row">
-          <Icon name="mdi:email" size="30" class="mr-2" />
-          <span class="self-center"
-            >f (dot) r (dot) churivera (at) uu (dot) nl</span
-          >
-        </a>
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main
+      class="relative flex flex-col max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
+    >
+      <div class="flex flex-col md:flex-row flex-1 mt-6 md:mt-10">
+        <div class="md:w-7/12 flex flex-col justify-center">
+          <h1 class="text-2xl my-6" style="font-weight: 550">Fernando Chu</h1>
+          <p>
+            I'm a first year PhD Student at Utrecht University, working under
+            supervision of <Link href="https://paigenorth.github.io/"
+              >Paige North</Link
+            >.
+          </p>
+          <p class="mt-3">
+            My main interests revolve around category theory and type theory. In
+            particular, I'd like to better understand how these can be used to
+            tackle classical problems, generate better abstractions and/or
+            facilitate formalization of mathematics into proof assistants.
+          </p>
+          <p class="mt-3">
+            I'm currently co-hosting the <Link
+              href="/catseminar"
+              targetBlank={false}>Category Theory Seminar</Link
+            > at Utrecht University with <Link
+              href="https://leoguetta.github.io/">Léonard Guetta</Link
+            >.
+          </p>
+          <div class="my-10 md:mt-20 text-gray-500 text-sm justify-end">
+            <a class="flex flex-row mb-1">
+              <Icon name="mdi:github" size="30" class="mr-2" />
+              <span class="self-center">https://github.com/FernandoChu</span>
+            </a>
+            <a class="flex flex-row">
+              <Icon name="mdi:email" size="30" class="mr-2" />
+              <span class="self-center"
+                >f (dot) r (dot) churivera (at) uu (dot) nl</span
+              >
+            </a>
+          </div>
+        </div>
+        <div class="md:w-5/12 md:ml-20 flex flex-col justify-center">
+          <Image alt="It's me" src={profileImg} />
+        </div>
       </div>
-    </div>
-    <div class="md:w-5/12 md:ml-20 flex flex-col justify-center">
-      <Image alt="It's me" src={profileImg} />
-    </div>
-  </div>
-</Layout>
+    </main>
+  </body>
+</html>

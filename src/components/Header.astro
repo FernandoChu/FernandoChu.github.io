@@ -1,3 +1,11 @@
+---
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = (href: string) =>
+  href === pathname || href === "/" + (subpath?.[0] || "");
+console.log(pathname);
+---
+
 <header class="bg-white shadow">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
@@ -7,7 +15,7 @@
           style="color: #479fee;"
           href="/"
         >
-          <span class="sr-only">Home</span>
+          <span class="sr-only">Home {pathname}</span>
           Fc.
         </a>
       </div>
@@ -18,11 +26,12 @@
             {
               [
                 ["Category Theory Seminar", "/catseminar"],
+                ["Research", "/research"],
                 ["Blog", "/blog"],
               ].map(([name, link]) => (
                 <li>
                   <a
-                    class="text-gray-600 transition hover:text-gray-600/75"
+                    class={`text-gray-600 transition hover:text-gray-600/75 ${isActive(link) ? "underline" : ""}`}
                     href={link}
                   >
                     {name}

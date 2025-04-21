@@ -1,0 +1,6 @@
+ @import "tailwindcss";
+ @plugin "@iconify/tailwind4";
+
+ @theme {
+  --font-sans: "DM Sans Variable"; 
+}

@@ -1,0 +1,89 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+import Link from "../components/Link.astro";
+
+const talksData: Array<[string, string, string, Array<[string, string]>]> = [
+  [
+    "A directed homotopy type theory for 1-categories",
+    "June 14, 2024",
+    "30th International Conference on Types for Proofs and Programs (TYPES 2024)",
+    [],
+  ],
+  [
+    "Towards a fully functorial directed type theory",
+    "February 7, 2025",
+    "DutchCATS meeting in Nijmegen",
+    [["DutchCATS2025-Slides.pdf", "Slides"]],
+  ],
+  [
+    "Dependent two-sided fibrations for directed type theory",
+    "June, 2025",
+    "31st International Conference on Types for Proofs and Programs (TYPES 2025)",
+    [
+      ["Types2024-Slides.pdf", "Slides"],
+      ["Types2024-Abstract.pdf", "Abstract"],
+    ],
+  ],
+];
+---
+
+<html lang="en">
+  <head><BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} /></head>
+  <body>
+    <Header />
+    <main
+      class="relative flex flex-col max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
+    >
+      <div class="flex flex-col mt-6 md:mt-10">
+        <h2 class="mb-1 text-2xl font-extrabold">Talks</h2>
+        <ul class="space-y-1 list-disc list-inside">
+          {
+            talksData.reverse().map((entry) => (
+              <li class="font-semibold list-disc">
+                {entry[0]}
+                <p class="text-gray-700 ml-10 font-normal">
+                  {entry[1]} · {entry[2]}
+                  {entry[3].length > 0 ? " · " : ""}
+                  {entry[3].map((linkData) => (
+                    <>
+                      <Link className="text-gray-700" href={linkData[0]}>
+                        {linkData[1]}
+                      </Link>{" "}
+                    </>
+                  ))}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+        <h2 class="mt-4 mb-1 text-2xl font-extrabold">Master's Thesis</h2>
+        <p>
+          <b class="font-semibold">Teoría Homotópica de Tipos</b>. Master's
+          thesis, Universidad Nacional Mayor de San Marcos, 2023.
+          {
+            [
+              ["./MastersThesis.pdf", "Pdf"],
+              ["https://fernandochu.github.io/MastersThesis/", "Agda"],
+              ["https://github.com/FernandoChu/MastersThesis", "Code"],
+            ].map((entry) => (
+              <>
+                <Link className="text-gray-700" href={entry[0]}>
+                  {entry[1]}
+                </Link>
+              </>
+            ))
+          }
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

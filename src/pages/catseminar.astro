@@ -1,6 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Link from "../components/common/Link.astro";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+import Link from "../components/Link.astro";
 
 const seminarData = [
   [
@@ -47,37 +51,58 @@ The results in this paper have been formalized using the proof assistant Coq and
     "Léonard Guetta - Lax Functoriality of the Grothendieck construction for ω-Categories",
     `In this talk, I will present recent joint work with Dimitri Ara on the generalization of the Grothendieck construction to ω-categories, focusing on its functorial properties. In order to do so,  we had to work within the realm of lax Gray ω-categories—higher categories in which the interchange law holds only up to a non-invertible cell. Despite the technical nature of this topic, I will assume only a basic familiarity with category theory and will introduce all the necessary notions. I will also highlight how these ideas arise naturally within the broader landscape of higher category theory. Reference: arXiv:2503.08832`,
   ],
-  ["April 8, 3:00pm - 4:30pm, in HFG 7.07", "Niels van der Weide - TBA", "TBA"],
-  ["April 22, 3:00pm - 4:30pm, in HFG 7.07", "TBA", "TBA"],
+  [
+    "April 8, 3:00pm - 4:30pm, in HFG 7.07",
+    "Léonard Guetta - Lax Functoriality of the Grothendieck construction for ω-Categories (Part 2)",
+    `In this talk, I will present recent joint work with Dimitri Ara on the generalization of the Grothendieck construction to ω-categories, focusing on its functorial properties. In order to do so,  we had to work within the realm of lax Gray ω-categories—higher categories in which the interchange law holds only up to a non-invertible cell. Despite the technical nature of this topic, I will assume only a basic familiarity with category theory and will introduce all the necessary notions. I will also highlight how these ideas arise naturally within the broader landscape of higher category theory. Reference: arXiv:2503.08832`,
+  ],
+  [
+    "April 22, 3:00pm - 4:30pm, in HFG 7.07",
+    "Niels van der Weide - The Univalence Maxim and Univalent Double Categories",
+    `Category theory unifies mathematical concepts, aiding comparisons across structures by incorporating not just objects, but also morphisms capturing interactions between objects. It has influenced areas of computer science such as automata theory, functional programming, and semantics. Of particular importance in some applications are double categories, which are categories with two classes of morphisms, axiomatizing two different kinds of interactions between objects. These have found applications in many areas of mathematics and theoretical computer science, for instance, the study of lenses, open systems, and rewriting.
+However, double categories come with a wide variety of equivalences, which makes it challenging to transport structure along equivalences. To deal with this challenge, we propose the univalence maxim: each notion of equivalence of categorical structures has a corresponding notion of univalent categorical structure which induces that notion of equivalence. We also prove corresponding univalence principles, which allow us to transport structure and properties along equivalences. In this way, the usually informal practice of reasoning modulo equivalence becomes grounded in an entirely formal logical principle.
+We apply this perspective to various double categorical structures, such as (pseudo) double categories and double bicategories. Concretely, we characterize and formalize their definitions in Rocq UniMath up to chosen equivalences, which we achieve by establishing their univalence principles.`,
+  ],
   ["May 6, 3:00pm - 4:30pm, in HFG 7.07", "Tom de Jong - TBA", "TBA"],
 ];
 ---
 
-<Layout title="Category Theory Seminar UU">
-  <div class="mt-8 flex flex-col">
-    <h2 class="mb-2 text-2xl font-medium">About</h2>
-    <p>
-      The category theory seminar runs every other week at Utrecht University.
-      Here category theory is understood in a broad sense, and topics can
-      include higher category theory, applications to homotopy theory and
-      computer science, among other things. The sessions will take up to 1h30m,
-      including questions.
-    </p>
-    <p class="mt-2">
-      If you would like to give a talk, please talk to me or
-      <Link href="https://leoguetta.github.io/">Léonard</Link>.
-    </p>
-    <h2 class="mt-5 mb-2 text-2xl font-medium">Schedule</h2>
-    <ul class="space-y-1 list-disc list-inside">
-      {
-        seminarData.reverse().map((entry) => (
-          <li class="font-semibold list-disc">
-            {entry[0]}
-            <p class="underline ml-10 font-normal">{entry[1]}</p>
-            <p class="text-gray-700 ml-10 font-normal mb-5">{entry[2]}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main
+      class="relative flex flex-col max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
+    >
+      <div class="mt-8 flex flex-col">
+        <h2 class="mb-2 text-2xl font-medium">About</h2>
+        <p>
+          The category theory seminar runs every other week at Utrecht
+          University. Here category theory is understood in a broad sense, and
+          topics can include higher category theory, applications to homotopy
+          theory and computer science, among other things. The sessions will
+          take up to 1h30m, including questions.
+        </p>
+        <p class="mt-2">
+          If you would like to give a talk, please talk to me or
+          <Link href="https://leoguetta.github.io/">Léonard</Link>.
+        </p>
+        <h2 class="mt-5 mb-2 text-2xl font-medium">Schedule</h2>
+        <ul class="space-y-1 list-disc list-inside">
+          {
+            seminarData.reverse().map((entry) => (
+              <li class="font-semibold list-disc">
+                {entry[0]}
+                <p class="underline ml-10 font-normal">{entry[1]}</p>
+                <p class="text-gray-700 ml-10 font-normal mb-5">{entry[2]}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>

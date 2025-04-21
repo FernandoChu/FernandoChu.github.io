@@ -1,15 +1,15 @@
 ---
 interface Props {
   href: string;
+  className?: string;
   targetBlank?: boolean;
 }
 
-const { href, targetBlank = true } = Astro.props;
+const { href, className = "", targetBlank = true } = Astro.props;
 ---
 
 <a
-  class="underline hover:text-blue-800 visited:text-purple-600"
-  style="color: #3d8bd0"
+  class={`underline hover:text-blue-800 visited:text-purple-600 ${className}`}
   target={targetBlank === true ? "_blank" : "_self"}
   rel={targetBlank === true ? "noreferrer noopener" : undefined}
   href=`${href}`><slot /></a
