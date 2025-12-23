@@ -31,7 +31,46 @@ const talksData: Array<[string, string, string, Array<[string, string]>]> = [
     "Dependent two-sided fibrations for directed type theory",
     "June, 2025",
     "31st International Conference on Types for Proofs and Programs (TYPES 2025)",
-    [],
+    [
+      ["Types2025-Slides.pdf", "Slides"],
+      ["Types2025-Abstract.pdf", "Abstract"],
+    ],
+  ],
+  [
+    "Lean: Cuando las matemáticas y la tecnología se unen",
+    "December, 2025",
+    "Talk at Universidad Nacional Mayor de San Marcos, Peru",
+    [["UNMSM2025-Slides.pdf", "Slides (in Spanish)"]],
+  ],
+];
+
+const activitiesData: Array<
+  [[string, string], string, string, Array<[string, string]>]
+> = [
+  [
+    [
+      "Summerschool: Formalising Mathematics in Lean 2025",
+      "Coorganizer and lecturer",
+    ],
+    "21-25 July, 2025",
+    "Utrecht University",
+    [
+      [
+        "https://github.com/formal-methods-nl/uu-summerschool-2025",
+        "Course Material",
+      ],
+    ],
+  ],
+  [
+    ["Mini-course: Formalizando Matemáticas en Lean", "Organizer and lecturer"],
+    "11, 12, 15 and 16 of December, 2025",
+    "Instituto de Matemática y Ciencias Afines (IMCA)",
+    [
+      [
+        "https://github.com/FernandoChu/LeanMinicurso2025",
+        "Course Material (in Spanish)",
+      ],
+    ],
   ],
 ];
 ---
@@ -50,12 +89,12 @@ const talksData: Array<[string, string, string, Array<[string, string]>]> = [
             talksData.reverse().map((entry) => (
               <li class="font-semibold list-disc">
                 {entry[0]}
-                <p class="text-gray-700 ml-10 font-normal">
+                <p class="text-secondary ml-10 font-normal">
                   {entry[1]} · {entry[2]}
                   {entry[3].length > 0 ? " · " : ""}
                   {entry[3].map((linkData) => (
                     <>
-                      <Link className="text-gray-700" href={linkData[0]}>
+                      <Link className="text-secondary" href={linkData[0]}>
                         {linkData[1]}
                       </Link>{" "}
                     </>
@@ -65,7 +104,28 @@ const talksData: Array<[string, string, string, Array<[string, string]>]> = [
             ))
           }
         </ul>
-        <h2 class="mt-4 mb-1 text-2xl font-extrabold">Master's Thesis</h2>
+        <h2 class="mt-12 mb-1 text-2xl font-extrabold">Other activities</h2>
+        <ul class="space-y-1 list-disc list-inside">
+          {
+            activitiesData.reverse().map((entry) => (
+              <li class="font-semibold list-disc">
+                {entry[0][0]} <span class="mx-1">·</span> {entry[0][1]}
+                <p class="text-secondary ml-10 font-normal">
+                  {entry[1]} · {entry[2]}
+                  {entry[3].length > 0 ? " · " : ""}
+                  {entry[3].map((linkData) => (
+                    <>
+                      <Link className="text-secondary" href={linkData[0]}>
+                        {linkData[1]}
+                      </Link>
+                    </>
+                  ))}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+        <h2 class="mt-12 mb-1 text-2xl font-extrabold">Master's Thesis</h2>
         <p>
           <b class="font-semibold">Teoría Homotópica de Tipos</b>. Master's
           thesis, Universidad Nacional Mayor de San Marcos, 2023.
@@ -76,7 +136,7 @@ const talksData: Array<[string, string, string, Array<[string, string]>]> = [
               ["https://github.com/FernandoChu/MastersThesis", "Code"],
             ].map((entry) => (
               <>
-                <Link className="text-gray-700" href={entry[0]}>
+                <Link className="text-secondary" href={entry[0]}>
                   {entry[1]}
                 </Link>
               </>

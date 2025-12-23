@@ -1,6 +1,21 @@
- @import "tailwindcss";
- @plugin "@iconify/tailwind4";
+@import "tailwindcss";
+@plugin "@iconify/tailwind4";
+@plugin "@tailwindcss/typography";
 
- @theme {
-  --font-sans: "DM Sans Variable"; 
+@theme {
+  --font-sans: "DM Sans Variable";
+  --color-secondary: oklch(37.3% 0.034 259.733); /* gray-700 */
+}
+
+/* Adds dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #151515;
+    color: #ddd;
+  }
+
+  @theme {
+    --font-sans: "DM Sans Variable";
+    --color-secondary: oklch(87.2% 0.01 258.338); /* gray-300 */
+  }
 }

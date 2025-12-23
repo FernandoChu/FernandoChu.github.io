@@ -6,7 +6,7 @@ const isActive = (href: string) =>
 console.log(pathname);
 ---
 
-<header class="bg-white shadow">
+<header class="shadow">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="md:flex md:items-center md:gap-12">
@@ -31,7 +31,7 @@ console.log(pathname);
               ].map(([name, link]) => (
                 <li>
                   <a
-                    class={`text-gray-600 transition hover:text-gray-600/75 ${isActive(link) ? "underline" : ""}`}
+                    class={`text-secondary transition hover:text-gray-600/75 ${isActive(link) ? "underline" : ""}`}
                     href={link}
                   >
                     {name}
