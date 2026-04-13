@@ -3,7 +3,12 @@ const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = (href: string) =>
   href === pathname || href === "/" + (subpath?.[0] || "");
-console.log(pathname);
+
+const navLinks = [
+  ["Category Theory Seminar", "/catseminar"],
+  ["Research", "/research"],
+  ["Blog", "/blog"],
+];
 ---
 
 <header class="shadow">
@@ -15,20 +20,17 @@ console.log(pathname);
           style="color: #479fee;"
           href="/"
         >
-          <span class="sr-only">Home {pathname}</span>
+          <span class="sr-only">Home</span>
           Fc.
         </a>
       </div>
 
+      <!-- Desktop nav -->
       <div class="hidden md:block">
         <nav aria-label="Global">
           <ul class="flex items-center gap-6 text-sm">
             {
-              [
-                ["Category Theory Seminar", "/catseminar"],
-                ["Research", "/research"],
-                ["Blog", "/blog"],
-              ].map(([name, link]) => (
+              navLinks.map(([name, link]) => (
                 <li>
                   <a
                     class={`text-secondary transition hover:text-gray-600/75 ${isActive(link) ? "underline" : ""}`}
@@ -42,6 +44,53 @@ console.log(pathname);
           </ul>
         </nav>
       </div>
+
+      <!-- Mobile hamburger button -->
+      <button
+        id="menu-toggle"
+        class="md:hidden p-2 text-secondary"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
+
+    <!-- Mobile nav -->
+    <nav id="mobile-menu" class="hidden md:hidden pb-4">
+      <ul class="flex flex-col gap-3 text-sm">
+        {
+          navLinks.map(([name, link]) => (
+            <li>
+              <a
+                class={`text-secondary transition hover:text-gray-600/75 ${isActive(link) ? "underline" : ""}`}
+                href={link}
+              >
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const iconOpen = document.getElementById("icon-open")!;
+  const iconClose = document.getElementById("icon-close")!;
+
+  toggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("hidden");
+    iconOpen.classList.toggle("hidden");
+    iconClose.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(!open));
+  });
+</script>
