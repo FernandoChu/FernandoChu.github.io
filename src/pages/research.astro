@@ -11,6 +11,15 @@ interface Props {
 
 import Link from "../components/Link.astro";
 
+const writingsData: Array<[string, string, string, Array<[string, string]>]> = [
+  [
+    "Directed type theory, with a twist",
+    "February 19, 2026",
+    "Arxiv Preprint",
+    [["https://arxiv.org/abs/2602.17480", "link"]],
+  ],
+];
+
 const talksData: Array<[string, string, string, Array<[string, string]>]> = [
   [
     "A directed homotopy type theory for 1-categories",
@@ -89,6 +98,27 @@ const activitiesData: Array<
       class="relative flex flex-col max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
     >
       <div class="flex flex-col mt-6 md:mt-10">
+        <h2 class="mb-1 text-2xl font-extrabold">Writings</h2>
+        <ul class="space-y-1 list-disc list-inside">
+          {
+            writingsData.reverse().map((entry) => (
+              <li class="font-semibold list-disc">
+                {entry[0]}
+                <p class="text-secondary ml-10 font-normal">
+                  {entry[1]} · {entry[2]}
+                  {entry[3].length > 0 ? " · " : ""}
+                  {entry[3].map((linkData) => (
+                    <>
+                      <Link className="text-secondary" href={linkData[0]}>
+                        {linkData[1]}
+                      </Link>{" "}
+                    </>
+                  ))}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
         <h2 class="mb-1 text-2xl font-extrabold">Talks</h2>
         <ul class="space-y-1 list-disc list-inside">
           {
